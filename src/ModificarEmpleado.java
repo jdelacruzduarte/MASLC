@@ -117,7 +117,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         txtTelefono.setText("");
         txtCelular.setText("");
         txtNSS.setText("");
-        txtFecha.cleanup();
+        txtFecha.setDate(null);
         txtSalario.setText("");
         txtTipoRemuneracion.setText("");
         txtAreNotas.setText("");

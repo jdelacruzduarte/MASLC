@@ -47,7 +47,7 @@ DefaultTableModel model;
     
     void cargar(String valor) {
         try{
-            String [] titulos={"NSS","Nombre","Apellido","Sexo","Cedula","Telefono","Celular","Estado","Fecha Ingreso","Salario","Remuneracion"};
+            String [] titulos={"NSS","Nombre","Apellido","Sexo","Cedula","Telefono","Celular","Estado","Salario","Remuneracion"};
             String [] registros= new String[16];
             model=new DefaultTableModel(null,titulos);
             String nomina = cmbNomina.getSelectedItem().toString();
@@ -63,26 +63,26 @@ DefaultTableModel model;
                 registros[5]=rs.getString("telEmpleado");
                 registros[6]=rs.getString("celEmpleado");
                 registros[7]=rs.getString("estadoEmpleado");
-                registros[8]=rs.getString("fechaIngreso");
-                registros[9]=rs.getString("salario");
-                registros[10]=rs.getString("remuneracion");
-                registros[11]=rs.getString("nota");
+               // registros[8]=rs.getString("fechaIngreso");
+                registros[8]=rs.getString("salario");
+                registros[9]=rs.getString("remuneracion");
+            //    registros[10]=rs.getString("nota");
              
                 
                 model.addRow(registros);      
             }
                 tableEmpleado.setModel(model);
-                tableEmpleado.getColumnModel().getColumn(0).setPreferredWidth(200);
+                tableEmpleado.getColumnModel().getColumn(0).setPreferredWidth(170);
                 tableEmpleado.getColumnModel().getColumn(1).setPreferredWidth(150);
                 tableEmpleado.getColumnModel().getColumn(2).setPreferredWidth(150);
                 tableEmpleado.getColumnModel().getColumn(3).setPreferredWidth(150);
                 tableEmpleado.getColumnModel().getColumn(4).setPreferredWidth(220);
                 tableEmpleado.getColumnModel().getColumn(5).setPreferredWidth(200);
                 tableEmpleado.getColumnModel().getColumn(6).setPreferredWidth(200);
-                tableEmpleado.getColumnModel().getColumn(7).setPreferredWidth(150);
-                tableEmpleado.getColumnModel().getColumn(8).setPreferredWidth(200);
-                tableEmpleado.getColumnModel().getColumn(9).setPreferredWidth(100);
-                tableEmpleado.getColumnModel().getColumn(10).setPreferredWidth(150);
+                tableEmpleado.getColumnModel().getColumn(7).setPreferredWidth(100);
+                tableEmpleado.getColumnModel().getColumn(8).setPreferredWidth(100);
+                tableEmpleado.getColumnModel().getColumn(9).setPreferredWidth(200);
+             //   tableEmpleado.getColumnModel().getColumn(10).setPreferredWidth(150);
               //  tableEmpleado.getColumnModel().getColumn(11).setPreferredWidth(150);
             }catch(Exception e){
                 System.out.println(e.getMessage());
@@ -229,7 +229,7 @@ DefaultTableModel model;
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 893, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cbxTipoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
@@ -257,7 +257,7 @@ DefaultTableModel model;
                     .addComponent(jLabel1)
                     .addComponent(cmbNomina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -288,8 +288,9 @@ DefaultTableModel model;
         tableEmpleado.setRowSorter(trsFiltro);      }//GEN-LAST:event_txtBuscarKeyTyped
 
     private void cmbNominaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNominaActionPerformed
-        // TODO add your handling code here:
+        
         cargar("");
+        
     }//GEN-LAST:event_cmbNominaActionPerformed
 
     private void MenuActualizarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuActualizarEmpleadoActionPerformed

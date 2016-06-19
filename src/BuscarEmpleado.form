@@ -95,7 +95,7 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="900" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="893" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="cbxTipoBusqueda" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
@@ -128,7 +128,7 @@
                   <Component id="cmbNomina" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="438" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="354" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>

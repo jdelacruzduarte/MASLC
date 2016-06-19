@@ -1,5 +1,6 @@
 
 import java.awt.Frame;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
@@ -38,9 +39,7 @@ DefaultTableModel model;
     public BuscarEmpleado() {
         initComponents();
         setLocationRelativeTo(null);
-     //   setExtendedState(Frame.MAXIMIZED_BOTH);
-        
-        
+        this.setTitle("Ministerio de Asistencia Social Luz en el Camino");
         setVisible(true);
         cargar("");
     }
@@ -153,6 +152,11 @@ DefaultTableModel model;
 
             }
         ));
+        tableEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableEmpleadoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableEmpleado);
 
         ButtBuscarEmpleado.setText("Salir");
@@ -257,8 +261,8 @@ DefaultTableModel model;
                     .addComponent(jLabel1)
                     .addComponent(cmbNomina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         pack();
@@ -296,6 +300,7 @@ DefaultTableModel model;
     private void MenuActualizarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuActualizarEmpleadoActionPerformed
         ModificarEmpleado ModEmp = new ModificarEmpleado();
         ModEmp.setVisible(true);
+        
         dispose();
     }//GEN-LAST:event_MenuActualizarEmpleadoActionPerformed
 
@@ -308,6 +313,26 @@ DefaultTableModel model;
         JOptionPane.showMessageDialog(null, "Contactos: jdelacruzduarte@gmail.com");
 
     }//GEN-LAST:event_MenuContactosActionPerformed
+
+    private void tableEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableEmpleadoMouseClicked
+        int filaseleccionada;
+        try{
+            filaseleccionada= tableEmpleado.getSelectedRow();
+            if (filaseleccionada==-1){
+                JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
+            }else{
+                DefaultTableModel modelotabla=(DefaultTableModel) tableEmpleado.getModel();
+                String cod=(String)tableEmpleado.getValueAt(filaseleccionada, 0);
+                ModificarEmpleado ModEmp = new ModificarEmpleado();
+                ModEmp.setVisible(true);
+                ModEmp.busqueda(cod);
+                dispose();
+            }
+        }catch (HeadlessException ex){
+
+            JOptionPane.showMessageDialog(null, "Error: "+ex+"\nInténtelo nuevamente", " .::Error En la Operacion::." ,JOptionPane.ERROR_MESSAGE);        
+        }
+    }//GEN-LAST:event_tableEmpleadoMouseClicked
 
     /**
      * @param args the command line arguments

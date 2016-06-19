@@ -1,4 +1,5 @@
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.awt.Frame;
 import static java.lang.Double.parseDouble;
 import java.sql.Connection;
@@ -34,13 +35,59 @@ public class ModificarEmpleado extends javax.swing.JFrame {
     public static ResultSet rs=null;
     public ModificarEmpleado() {
         initComponents();
-//        BotonGrupo.add(RadioSexMasculino);
-  //      BotonGrupo.add(RadioSexFemenino);
+        bloquearTXT();
         setLocationRelativeTo(null);
+        this.setTitle("Ministerio de Asistencia Social Luz en el Camino");
       //  setExtendedState(Frame.MAXIMIZED_BOTH);
         carga();
+        contador();
     }
     
+    public void contador(){
+        String nomina = cmbNomina_2.getSelectedItem().toString();
+        String sql="select count(*) from empleados WHERE tipoNomina='"+nomina+"'";
+        //labelContadorMax.setText(SQL);
+        
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next())
+            {               
+                labelContadorMax.setText(rs.getString("count(*)"));                
+            }
+        }
+             catch (SQLException ex) {
+           // Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void busqueda (String nss){
+        String sql="select * from empleados WHERE nssEmpleado='"+nss+"'";
+       try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while(rs.next())
+            {               
+                cmbSexo.setSelectedItem(rs.getString("sexoEmpleado"));
+                cmbEstado.setSelectedItem(rs.getString("estadoEmpleado"));
+                cmbNomina.setSelectedItem(rs.getString("tipoNomina"));
+                txtNSS.setText(rs.getString("nssEmpleado"));
+                txtNombre.setText(rs.getString("nomEmpleado"));
+                txtApellido.setText(rs.getString("apeEmpleado"));            
+                txtCedula.setText(rs.getString("cedEmpleado"));
+                txtTelefono.setText(rs.getString("telEmpleado"));
+                txtCelular.setText(rs.getString("celEmpleado"));            
+                //txtFecha.setDate(formatoDelTexto.parse(rs.getString("fechaIngreso")));
+                txtFecha.setDate(rs.getDate("fechaIngreso"));
+                //txtFecha.setDateFormatString(rs.getString("fechaIngreso"));
+                txtSalario.setText(rs.getString("salario"));
+                txtTipoRemuneracion.setText(rs.getString("remuneracion"));
+                txtAreNotas.setText(rs.getString("nota"));
+            }
+        }
+             catch (SQLException ex) {
+           // Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     public void desbloquearTXT(){
       //txtNSS.setEnabled(true); // no se desbloquea para tomar este campo para realizar update
         txtNombre.setEnabled(true);
@@ -73,35 +120,36 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         cmbNomina.setEnabled(false);
     }
     
-    public void carga(){
+    public void carga (){
         String nomina = cmbNomina_2.getSelectedItem().toString();
-        String cons="select * from empleados WHERE tipoNomina='"+nomina+"' ";
-        
-        try {
-            
+        String cons="select * from empleados WHERE tipoNomina='"+nomina+"' ";        
+        try {            
              st= cn.createStatement();
              rs = st.executeQuery(cons);
              rs.first();
-             llenarTXT("");
+             labContador.setText(Integer.toString(rs.getRow()));
+
+             llenarTXT();
         
         }catch(Exception e){
         JOptionPane.showMessageDialog(this, e.toString());
-    }
+        }
         
     }
-    void llenarTXT(String valor) {
-        try{
-            SimpleDateFormat formatoDelTexto = new SimpleDateFormat("YYYY-MM-dd");
-              //  registros[3]=rs.getString("sexoEmpleado");
-              
-                //registros[7]=rs.getString("estadoEmpleado");
+    void llenarTXT () {
+        try{            
+            cmbSexo.setSelectedItem(rs.getString("sexoEmpleado"));
+            cmbEstado.setSelectedItem(rs.getString("estadoEmpleado"));
+            cmbNomina.setSelectedItem(rs.getString("tipoNomina"));
             txtNSS.setText(rs.getString("nssEmpleado"));
             txtNombre.setText(rs.getString("nomEmpleado"));
             txtApellido.setText(rs.getString("apeEmpleado"));            
             txtCedula.setText(rs.getString("cedEmpleado"));
             txtTelefono.setText(rs.getString("telEmpleado"));
             txtCelular.setText(rs.getString("celEmpleado"));            
-            txtFecha.setDate(formatoDelTexto.parse(rs.getString("fechaIngreso")));
+            //txtFecha.setDate(formatoDelTexto.parse(rs.getString("fechaIngreso")));
+            txtFecha.setDate(rs.getDate("fechaIngreso"));
+            //txtFecha.setDateFormatString(rs.getString("fechaIngreso"));
             txtSalario.setText(rs.getString("salario"));
             txtTipoRemuneracion.setText(rs.getString("remuneracion"));
             txtAreNotas.setText(rs.getString("nota"));
@@ -151,7 +199,6 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         LabelApellido = new javax.swing.JLabel();
         LabelNombre = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        txtFecha = new com.toedter.calendar.JDateChooser();
         LabelFechaIngreso = new javax.swing.JLabel();
         LabelNSS = new javax.swing.JLabel();
         LabelSalario = new javax.swing.JLabel();
@@ -170,6 +217,10 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         cmbNomina = new javax.swing.JComboBox();
         buttBack = new javax.swing.JButton();
         buttNext = new javax.swing.JButton();
+        txtFecha = new com.toedter.calendar.JDateChooser();
+        labContador = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        labelContadorMax = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         cmbNomina_2 = new javax.swing.JComboBox();
         MenuPrincipal = new javax.swing.JMenuBar();
@@ -273,10 +324,6 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         txtNombre.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtNombre.setEnabled(false);
 
-        txtFecha.setDateFormatString("YYYY/MM/dd");
-        txtFecha.setEnabled(false);
-        txtFecha.setOpaque(false);
-
         LabelFechaIngreso.setText("Fecha de ingreso");
 
         LabelNSS.setText("NSS");
@@ -354,6 +401,12 @@ public class ModificarEmpleado extends javax.swing.JFrame {
             }
         });
 
+        labContador.setText("1");
+
+        jLabel9.setText("De");
+
+        labelContadorMax.setText("1");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -386,52 +439,56 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                                 .addComponent(txtNombre)
                                 .addComponent(txtNSS, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))))
                     .addComponent(jLabel5))
+                .addGap(6, 6, 6)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 4, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LabelTipoRemuneracion, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(LabelSalario, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtTipoRemuneracion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(21, 21, 21))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(LabelFechaIngreso)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addGap(4, 4, 4)))
+                                .addGap(35, 35, 35)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmbNomina, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(LabelTipoRemuneracion, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(LabelSalario, javax.swing.GroupLayout.Alignment.TRAILING))
-                                        .addGap(39, 39, 39)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtTipoRemuneracion, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                            .addComponent(txtSalario)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(LabelFechaIngreso)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addComponent(jLabel6)
-                                                .addGap(4, 4, 4)))
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGap(35, 35, 35)
-                                                .addComponent(cmbNomina, 0, 1, Short.MAX_VALUE)))))))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttBack)
-                        .addGap(18, 18, 18)
-                        .addComponent(buttNext)
-                        .addGap(79, 79, 79))))
+                                .addComponent(buttBack)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(buttNext)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labContador)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelContadorMax, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1))))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(7, 7, 7)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LabelNSS)
                             .addComponent(LabelFechaIngreso)
@@ -464,8 +521,9 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
                         .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmbNomina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
@@ -486,8 +544,12 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                         .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(buttBack, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(buttNext, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(buttNext, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labContador)
+                            .addComponent(jLabel9)
+                            .addComponent(labelContadorMax))))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jLabel7.setText("Nomina");
@@ -582,7 +644,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55))
+                .addContainerGap())
         );
 
         pack();
@@ -599,8 +661,19 @@ public class ModificarEmpleado extends javax.swing.JFrame {
     }//GEN-LAST:event_buttSalirActionPerformed
 
     private void buttGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttGuardarActionPerformed
-       
         
+        String sql="UPDATE empleados SET nomEmpleado= '"+txtNombre.getText()+"', apeEmpleado= '"+txtApellido.getText()+"',sexoEmpleado ='"+cmbSexo.getSelectedItem().toString()+"',cedEmpleado = '"+txtCedula.getText()+"',telEmpleado='"+txtTelefono.getText()+"',celEmpleado='"+txtCelular.getText()+"',estadoEmpleado='"+cmbEstado.getSelectedItem().toString()+"',fechaIngreso='"+new java.sql.Date(txtFecha.getDate().getTime())+"',tipoNomina='"+cmbNomina.getSelectedItem().toString()+"',salario='"+txtSalario.getText()+"',remuneracion='"+txtTipoRemuneracion.getText()+"',nota='"+txtAreNotas.getText()+"' WHERE nssEmpleado = '"+txtNSS.getText()+"'";
+       try {
+            PreparedStatement pst = cn.prepareStatement(sql);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Registro actualizado");
+            Limpiar();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "Error al guardar");
+
+        } 
     }//GEN-LAST:event_buttGuardarActionPerformed
 
     private void buttLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttLimpiarActionPerformed
@@ -627,8 +700,9 @@ public class ModificarEmpleado extends javax.swing.JFrame {
             if (rs.isLast()){
                 JOptionPane.showMessageDialog(null, "Final de la tabla");}
             else{
-                rs.next();
-                llenarTXT("");
+                rs.next();                
+                labContador.setText(Integer.toString(rs.getRow()));
+                llenarTXT();
                 bloquearTXT();
             }
         }catch(Exception e){
@@ -643,7 +717,8 @@ public class ModificarEmpleado extends javax.swing.JFrame {
             }
                 else {
                 rs.previous();
-                llenarTXT("");
+                labContador.setText(Integer.toString(rs.getRow()));
+                llenarTXT();
                 bloquearTXT();
                         }
         }catch(Exception e){
@@ -731,10 +806,13 @@ public class ModificarEmpleado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labContador;
+    private javax.swing.JLabel labelContadorMax;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextArea txtAreNotas;

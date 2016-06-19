@@ -30,6 +30,7 @@ public class AgregarEmpleado extends javax.swing.JFrame {
     public AgregarEmpleado() {
         initComponents();
         setLocationRelativeTo(null);
+        this.setTitle("Ministerio de Asistencia Social Luz en el Camino");
       //  setExtendedState(Frame.MAXIMIZED_BOTH);
     }
     

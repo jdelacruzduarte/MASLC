@@ -108,7 +108,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="cmbNomina" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="buttExportar" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttReporte" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="ButtBuscarEmpleado" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -126,7 +126,7 @@
                   <Component id="cbxTipoBusqueda" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="ButtBuscarEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="buttExportar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="buttReporte" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmbNomina" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -187,12 +187,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtBuscarEmpleadoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="buttExportar">
+    <Component class="javax.swing.JButton" name="buttReporte">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Exportar"/>
+        <Property name="text" type="java.lang.String" value="Reporte"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttExportarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttReporteActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">

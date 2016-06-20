@@ -123,7 +123,7 @@ DefaultTableModel model;
         jScrollPane1 = new javax.swing.JScrollPane();
         tableEmpleado = new javax.swing.JTable();
         ButtBuscarEmpleado = new javax.swing.JButton();
-        buttExportar = new javax.swing.JButton();
+        buttReporte = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         cmbNomina = new javax.swing.JComboBox();
         MenuPrincipal = new javax.swing.JMenuBar();
@@ -170,10 +170,10 @@ DefaultTableModel model;
             }
         });
 
-        buttExportar.setText("Exportar");
-        buttExportar.addActionListener(new java.awt.event.ActionListener() {
+        buttReporte.setText("Reporte");
+        buttReporte.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttExportarActionPerformed(evt);
+                buttReporteActionPerformed(evt);
             }
         });
 
@@ -257,7 +257,7 @@ DefaultTableModel model;
                         .addGap(18, 18, 18)
                         .addComponent(cmbNomina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(buttExportar)
+                        .addComponent(buttReporte)
                         .addGap(18, 18, 18)
                         .addComponent(ButtBuscarEmpleado)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -271,7 +271,7 @@ DefaultTableModel model;
                     .addComponent(cbxTipoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ButtBuscarEmpleado)
-                    .addComponent(buttExportar)
+                    .addComponent(buttReporte)
                     .addComponent(jLabel1)
                     .addComponent(cmbNomina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -348,7 +348,7 @@ DefaultTableModel model;
         }
     }//GEN-LAST:event_tableEmpleadoMouseClicked
 
-    private void buttExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttExportarActionPerformed
+    private void buttReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttReporteActionPerformed
         Object nomina = JOptionPane.showInputDialog(null,"Selecccione una nomina",
             "Nomina", JOptionPane.QUESTION_MESSAGE, null,
             new Object[] { "Seleccione","Principal", "Mirador del Ozama" },"Seleccione");
@@ -362,7 +362,7 @@ DefaultTableModel model;
             JOptionPane.showMessageDialog(null, "Nomina Mirador del Ozama En proceso!!!!!");
         }
         
-    }//GEN-LAST:event_buttExportarActionPerformed
+    }//GEN-LAST:event_buttReporteActionPerformed
 
     private void MenuBuscarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuBuscarEmpleadoActionPerformed
         // TODO add your handling code here:
@@ -414,7 +414,7 @@ DefaultTableModel model;
     private javax.swing.JMenuItem MenuContactos;
     private javax.swing.JMenuBar MenuPrincipal;
     private javax.swing.JMenuItem MenuRegistrarEmpleado;
-    private javax.swing.JButton buttExportar;
+    private javax.swing.JButton buttReporte;
     private javax.swing.JComboBox cbxTipoBusqueda;
     private javax.swing.JComboBox cmbNomina;
     private javax.swing.JLabel jLabel1;

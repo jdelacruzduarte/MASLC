@@ -693,6 +693,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
     private void cmbNomina_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNomina_2ActionPerformed
         carga();
         bloquearTXT();
+        contador();
     }//GEN-LAST:event_cmbNomina_2ActionPerformed
 
     private void buttNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttNextActionPerformed

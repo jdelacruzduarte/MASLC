@@ -1,4 +1,7 @@
+package InterfazUsuario;
 
+import Clases.conexion;
+import InterfazUsuario.BuscarEmpleado;
 import java.awt.Frame;
 import static java.lang.Double.parseDouble;
 import java.sql.Connection;

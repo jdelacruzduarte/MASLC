@@ -44,6 +44,7 @@ DefaultTableModel model;
         initComponents();
         setLocationRelativeTo(null);
         this.setTitle("Ministerio de Asistencia Social Luz en el Camino");
+       // setExtendedState(Frame.MAXIMIZED_BOTH);
         setVisible(true);
         cargar("");
     }
@@ -123,7 +124,7 @@ DefaultTableModel model;
         jScrollPane1 = new javax.swing.JScrollPane();
         tableEmpleado = new javax.swing.JTable();
         ButtBuscarEmpleado = new javax.swing.JButton();
-        buttReporte = new javax.swing.JButton();
+        buttExportar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         cmbNomina = new javax.swing.JComboBox();
         MenuPrincipal = new javax.swing.JMenuBar();
@@ -137,9 +138,9 @@ DefaultTableModel model;
         MenuContactos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(920, 637));
-        setResizable(false);
+        setPreferredSize(new java.awt.Dimension(800, 500));
 
+        cbxTipoBusqueda.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cbxTipoBusqueda.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nombre", "Cedula", "NSS" }));
 
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -163,6 +164,7 @@ DefaultTableModel model;
         });
         jScrollPane1.setViewportView(tableEmpleado);
 
+        ButtBuscarEmpleado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         ButtBuscarEmpleado.setText("Salir");
         ButtBuscarEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,13 +172,15 @@ DefaultTableModel model;
             }
         });
 
-        buttReporte.setText("Reporte");
-        buttReporte.addActionListener(new java.awt.event.ActionListener() {
+        buttExportar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        buttExportar.setText("Exportar");
+        buttExportar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttReporteActionPerformed(evt);
+                buttExportarActionPerformed(evt);
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Nomina");
 
         cmbNomina.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Principal", "Mirador del Ozama" }));
@@ -247,7 +251,7 @@ DefaultTableModel model;
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 893, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cbxTipoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
@@ -255,12 +259,12 @@ DefaultTableModel model;
                         .addGap(18, 18, 18)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(cmbNomina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbNomina, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(buttReporte)
+                        .addComponent(buttExportar)
                         .addGap(18, 18, 18)
                         .addComponent(ButtBuscarEmpleado)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 25, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -271,11 +275,11 @@ DefaultTableModel model;
                     .addComponent(cbxTipoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ButtBuscarEmpleado)
-                    .addComponent(buttReporte)
+                    .addComponent(buttExportar)
                     .addComponent(jLabel1)
                     .addComponent(cmbNomina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -348,7 +352,7 @@ DefaultTableModel model;
         }
     }//GEN-LAST:event_tableEmpleadoMouseClicked
 
-    private void buttReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttReporteActionPerformed
+    private void buttExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttExportarActionPerformed
         Object nomina = JOptionPane.showInputDialog(null,"Selecccione una nomina",
             "Nomina", JOptionPane.QUESTION_MESSAGE, null,
             new Object[] { "Seleccione","Principal", "Mirador del Ozama" },"Seleccione");
@@ -362,7 +366,7 @@ DefaultTableModel model;
             JOptionPane.showMessageDialog(null, "Nomina Mirador del Ozama En proceso!!!!!");
         }
         
-    }//GEN-LAST:event_buttReporteActionPerformed
+    }//GEN-LAST:event_buttExportarActionPerformed
 
     private void MenuBuscarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuBuscarEmpleadoActionPerformed
         // TODO add your handling code here:
@@ -414,7 +418,7 @@ DefaultTableModel model;
     private javax.swing.JMenuItem MenuContactos;
     private javax.swing.JMenuBar MenuPrincipal;
     private javax.swing.JMenuItem MenuRegistrarEmpleado;
-    private javax.swing.JButton buttReporte;
+    private javax.swing.JButton buttExportar;
     private javax.swing.JComboBox cbxTipoBusqueda;
     private javax.swing.JComboBox cmbNomina;
     private javax.swing.JLabel jLabel1;

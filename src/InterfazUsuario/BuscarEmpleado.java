@@ -16,6 +16,7 @@ import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import Clases.ReportNominaPrincipal;
+import javax.swing.ImageIcon;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -43,8 +44,14 @@ DefaultTableModel model;
     public BuscarEmpleado() {
         initComponents();
         setLocationRelativeTo(null);
+        setExtendedState(Frame.MAXIMIZED_BOTH);
         this.setTitle("Ministerio de Asistencia Social Luz en el Camino");
-       // setExtendedState(Frame.MAXIMIZED_BOTH);
+       // Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("C:\\Users\\Jesus\\Documents\\NetBeansProjects\\MASLC\\src\\Imagenes\\azure-registro.png"));
+        //setIconImage(icon);
+       
+       // setIconImage(new ImageIcon(getClass().getResource("../imagenes/azure-registro.png")).getImage());
+        
+        
         setVisible(true);
         cargar("");
     }
@@ -55,7 +62,7 @@ DefaultTableModel model;
             String [] registros= new String[16];
             model=new DefaultTableModel(null,titulos);
             String nomina = cmbNomina.getSelectedItem().toString();
-            String cons="select * from empleados WHERE tipoNomina='"+nomina+"'";
+            String cons="select * from empleados WHERE tipoNomina='"+nomina+"' ORDER BY apeEmpleado";
             Statement st= cn.createStatement();
             ResultSet rs = st.executeQuery(cons);
             while(rs.next()){

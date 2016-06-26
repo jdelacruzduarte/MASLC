@@ -1,8 +1,9 @@
 package InterfazUsuario;
 
 import Clases.conexion;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.awt.Frame;
+import java.awt.Image;
+import java.awt.Toolkit;
 import static java.lang.Double.parseDouble;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -40,7 +42,11 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         bloquearTXT();
         setLocationRelativeTo(null);
         this.setTitle("Ministerio de Asistencia Social Luz en el Camino");
-       // setExtendedState(Frame.MAXIMIZED_BOTH);
+        setExtendedState(Frame.MAXIMIZED_BOTH);
+        //Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/imagenes/azure-registro.png"));
+        //setIconImage(icon);
+         //       setIconImage(new ImageIcon(getClass().getResource("../imagenes/azure-registro.png")).getImage());
+
         carga();
         contador();
     }
@@ -153,7 +159,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                  }     
     }
     void Limpiar (){
-       // txtCodigo.setText("");
+        //txtCodigo.setText("");
         txtNombre.setText("");
         txtApellido.setText("");
         txtCedula.setText("");
@@ -230,6 +236,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         MenuContactos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFont(new java.awt.Font("Agency FB", 0, 5)); // NOI18N
         setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
@@ -430,6 +437,8 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                 buttNextActionPerformed(evt);
             }
         });
+
+        txtFecha.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
 
         labContador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labContador.setText("1");
@@ -677,6 +686,9 @@ public class ModificarEmpleado extends javax.swing.JFrame {
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Registro actualizado");
             Limpiar();
+            BuscarEmpleado BusEmp = new BuscarEmpleado();
+            BusEmp.setVisible(true);
+            dispose();
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);

@@ -3,6 +3,8 @@ package InterfazUsuario;
 import Clases.conexion;
 import InterfazUsuario.BuscarEmpleado;
 import java.awt.Frame;
+import java.awt.Image;
+import java.awt.Toolkit;
 import static java.lang.Double.parseDouble;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /*
@@ -34,7 +37,12 @@ public class AgregarEmpleado extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.setTitle("Ministerio de Asistencia Social Luz en el Camino");
-       // setExtendedState(Frame.MAXIMIZED_BOTH);
+        setExtendedState(Frame.MAXIMIZED_BOTH);
+       // Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/imagenes/azure-registro.png"));
+       // setIconImage(icon);
+       //C:/Users/Jesus/Documents/NetBeansProjects/MASLC/src/Imagenes/azure-registro.png
+       //  setIconImage(new ImageIcon(getClass().getResource("../imagenes/azure-registro.png")).getImage());
+
     }
     
     void Limpiar (){

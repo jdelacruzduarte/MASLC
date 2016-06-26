@@ -18,6 +18,7 @@ import java.sql.Connection;
  *
  * @author JesusMini
  */
+//Para que funcione necesita la libreria jasperreports-4.1.2.jar
 public class ReportNominaPrincipal {
     private static JasperReport report;
     private static JasperPrint reportFiled;

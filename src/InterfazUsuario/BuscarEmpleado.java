@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import Clases.ReportNominaPrincipal;
+import Clases.ReportNomina;
 import javax.swing.ImageIcon;
 
 /*
@@ -180,7 +180,7 @@ DefaultTableModel model;
         });
 
         buttExportar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        buttExportar.setText("Exportar");
+        buttExportar.setText("Reportes");
         buttExportar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttExportarActionPerformed(evt);
@@ -366,13 +366,13 @@ DefaultTableModel model;
         if (nomina.toString().equals("Principal")){
            // JOptionPane.showMessageDialog(null, "Nomina principal En proceso!!!!!");
             
-            ReportNominaPrincipal.CrearReporteNomPrincipal();
-            ReportNominaPrincipal.ShowViewerReporte(); 
+            ReportNomina.CrearReporteNomPrincipal();
+            ReportNomina.ShowViewerReporte(); 
             
         }else {
           //  JOptionPane.showMessageDialog(null, "Nomina Mirador del Ozama En proceso!!!!!");
-            ReportNominaPrincipal.CrearReporteNomMirador();
-            ReportNominaPrincipal.ShowViewerReporte();
+            ReportNomina.CrearReporteNomMirador();
+            ReportNomina.ShowViewerReporte();
             
             
         }

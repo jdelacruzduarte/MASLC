@@ -18,20 +18,21 @@ import java.sql.Connection;
  *
  * @author JesusMini
  */
-//Para que funcione necesita la libreria jasperreports-4.1.2.jar
 public class ReportNominaPrincipal {
     private static JasperReport report;
     private static JasperPrint reportFiled;
     private static JasperViewer viewer;
     
-public static void CrearReporteProductos()
+public static void CrearReporteNomPrincipal()
     {
         
         conexion cc = new conexion();
         Connection cn = cc.obtener();
         try
         {            
-            String path = "C:\\Users\\JesusMini\\Documents\\NetBeansProjects\\MASLC\\src\\Reportes\\NominaPrincipal.jasper";
+            //String path = "C:\\Users\\JesusMini\\Documents\\NetBeansProjects\\MASLC\\src\\Reportes\\NominaPrincipal.jasper";
+            String path = "C:\\Users\\Jesus\\Documents\\NetBeansProjects\\MASLC\\src\\Reportes\\NominaPrincipal.jasper";
+            
             report = (JasperReport) JRLoader.loadObjectFromFile(path);            
             reportFiled = JasperFillManager.fillReport(report, null, cn);       
         }
@@ -40,8 +41,25 @@ public static void CrearReporteProductos()
                     ex.printStackTrace();
                 }
     }
-    
-    public static void ShowViewerProductos()
+    public static void CrearReporteNomMirador()
+    {
+        
+        conexion cc = new conexion();
+        Connection cn = cc.obtener();
+        try
+        {            
+            //String path = "C:\\Users\\JesusMini\\Documents\\NetBeansProjects\\MASLC\\src\\Reportes\\NominaPrincipal.jasper";
+            String path = "C:\\Users\\Jesus\\Documents\\NetBeansProjects\\MASLC\\src\\Reportes\\NominaMirador.jasper";
+            
+            report = (JasperReport) JRLoader.loadObjectFromFile(path);            
+            reportFiled = JasperFillManager.fillReport(report, null, cn);       
+        }
+        catch(JRException ex)
+                {
+                    ex.printStackTrace();
+                }
+    }
+    public static void ShowViewerReporte()
     {       
             viewer = new JasperViewer (reportFiled, false);
             viewer.setVisible(true);  

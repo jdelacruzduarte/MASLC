@@ -366,11 +366,15 @@ DefaultTableModel model;
         if (nomina.toString().equals("Principal")){
            // JOptionPane.showMessageDialog(null, "Nomina principal En proceso!!!!!");
             
-            ReportNominaPrincipal.CrearReporteProductos();
-            ReportNominaPrincipal.ShowViewerProductos(); 
+            ReportNominaPrincipal.CrearReporteNomPrincipal();
+            ReportNominaPrincipal.ShowViewerReporte(); 
             
         }else {
-            JOptionPane.showMessageDialog(null, "Nomina Mirador del Ozama En proceso!!!!!");
+          //  JOptionPane.showMessageDialog(null, "Nomina Mirador del Ozama En proceso!!!!!");
+            ReportNominaPrincipal.CrearReporteNomMirador();
+            ReportNominaPrincipal.ShowViewerReporte();
+            
+            
         }
         
     }//GEN-LAST:event_buttExportarActionPerformed

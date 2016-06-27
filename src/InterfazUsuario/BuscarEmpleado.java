@@ -46,12 +46,7 @@ DefaultTableModel model;
         setLocationRelativeTo(null);
         setExtendedState(Frame.MAXIMIZED_BOTH);
         this.setTitle("Ministerio de Asistencia Social Luz en el Camino");
-       // Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("C:\\Users\\Jesus\\Documents\\NetBeansProjects\\MASLC\\src\\Imagenes\\azure-registro.png"));
-        //setIconImage(icon);
-       
-       // setIconImage(new ImageIcon(getClass().getResource("../imagenes/azure-registro.png")).getImage());
-        
-        
+       // setIconImage(new ImageIcon(getClass().getResource("/Imagenes/registro.png")).getImage());
         setVisible(true);
         cargar("");
     }
@@ -134,6 +129,7 @@ DefaultTableModel model;
         buttExportar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         cmbNomina = new javax.swing.JComboBox();
+        jLabel2 = new javax.swing.JLabel();
         MenuPrincipal = new javax.swing.JMenuBar();
         MenuAdministrar = new javax.swing.JMenu();
         MenuRegistrarEmpleado = new javax.swing.JMenuItem();
@@ -145,6 +141,7 @@ DefaultTableModel model;
         MenuContactos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/registro.png")).getImage());
         setPreferredSize(new java.awt.Dimension(800, 500));
 
         cbxTipoBusqueda.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -180,7 +177,8 @@ DefaultTableModel model;
         });
 
         buttExportar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        buttExportar.setText("Reportes");
+        buttExportar.setText("Reporte");
+        buttExportar.setPreferredSize(new java.awt.Dimension(81, 25));
         buttExportar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttExportarActionPerformed(evt);
@@ -196,6 +194,9 @@ DefaultTableModel model;
                 cmbNominaActionPerformed(evt);
             }
         });
+
+        jLabel2.setFont(new java.awt.Font("Sylfaen", 0, 36)); // NOI18N
+        jLabel2.setText("Ministerio de Asistencia Social Luz en el Camino");
 
         MenuAdministrar.setText("Adminsitrar");
 
@@ -256,9 +257,8 @@ DefaultTableModel model;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cbxTipoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
@@ -268,26 +268,33 @@ DefaultTableModel model;
                         .addGap(18, 18, 18)
                         .addComponent(cmbNomina, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(buttExportar)
-                        .addGap(18, 18, 18)
+                        .addComponent(buttExportar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
                         .addComponent(ButtBuscarEmpleado)
-                        .addGap(0, 25, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 813, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(11, 11, 11)
+                .addComponent(jLabel2)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbxTipoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ButtBuscarEmpleado)
-                    .addComponent(buttExportar)
-                    .addComponent(jLabel1)
-                    .addComponent(cmbNomina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(cmbNomina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(buttExportar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ButtBuscarEmpleado))))
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane1)
+                .addGap(7, 7, 7))
         );
 
         pack();
@@ -433,6 +440,7 @@ DefaultTableModel model;
     private javax.swing.JComboBox cbxTipoBusqueda;
     private javax.swing.JComboBox cmbNomina;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableEmpleado;
     private javax.swing.JTextField txtBuscar;

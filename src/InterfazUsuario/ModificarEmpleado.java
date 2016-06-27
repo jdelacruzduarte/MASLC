@@ -43,9 +43,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.setTitle("Ministerio de Asistencia Social Luz en el Camino");
         setExtendedState(Frame.MAXIMIZED_BOTH);
-        //Image icon = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/imagenes/azure-registro.png"));
-        //setIconImage(icon);
-         //       setIconImage(new ImageIcon(getClass().getResource("../imagenes/azure-registro.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/Imagenes/registro.png")).getImage()); 
 
         carga();
         contador();
@@ -106,6 +104,8 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         cmbSexo.setEnabled(true);
         cmbEstado.setEnabled(true);
         cmbNomina.setEnabled(true);
+        buttGuardar.setEnabled(true);
+        buttLimpiar.setEnabled(true);
     }
     
     public void bloquearTXT(){
@@ -122,6 +122,8 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         cmbSexo.setEnabled(false);
         cmbEstado.setEnabled(false);
         cmbNomina.setEnabled(false);
+        buttGuardar.setEnabled(false);
+        buttLimpiar.setEnabled(false);
     }
     
     public void carga (){
@@ -219,10 +221,10 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         cmbNomina = new javax.swing.JComboBox();
         buttBack = new javax.swing.JButton();
         buttNext = new javax.swing.JButton();
-        txtFecha = new com.toedter.calendar.JDateChooser();
         labContador = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         labelContadorMax = new javax.swing.JLabel();
+        txtFecha = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
         cmbNomina_2 = new javax.swing.JComboBox();
         MenuPrincipal = new javax.swing.JMenuBar();
@@ -253,7 +255,8 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         buttGuardar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        buttGuardar.setText("Actualizar");
+        buttGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/guardar.png"))); // NOI18N
+        buttGuardar.setPreferredSize(new java.awt.Dimension(81, 57));
         buttGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttGuardarActionPerformed(evt);
@@ -261,7 +264,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         });
 
         buttLimpiar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        buttLimpiar.setText("Limpiar");
+        buttLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/limpiar.png"))); // NOI18N
         buttLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttLimpiarActionPerformed(evt);
@@ -269,7 +272,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         });
 
         buttSalir.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        buttSalir.setText("Salir");
+        buttSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salir.png"))); // NOI18N
         buttSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttSalirActionPerformed(evt);
@@ -277,7 +280,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         });
 
         buttEditar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        buttEditar.setText("Editar");
+        buttEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/editar.png"))); // NOI18N
         buttEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttEditarActionPerformed(evt);
@@ -288,23 +291,21 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(buttGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(buttLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(buttEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(buttEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(buttLimpiar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(buttGuardar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(buttSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(buttGuardar)
+                .addComponent(buttGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(buttLimpiar)
                 .addGap(18, 18, 18)
@@ -316,9 +317,9 @@ public class ModificarEmpleado extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 16);
+        gridBagConstraints.insets = new java.awt.Insets(18, 10, 0, 0);
         getContentPane().add(jPanel1, gridBagConstraints);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -438,8 +439,6 @@ public class ModificarEmpleado extends javax.swing.JFrame {
             }
         });
 
-        txtFecha.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-
         labContador.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         labContador.setText("1");
 
@@ -465,18 +464,18 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                             .addComponent(LabelCedula)
                             .addComponent(LabelNombre)
                             .addComponent(LabelNSS))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(txtCelular)
                             .addComponent(txtTelefono)
                             .addComponent(txtCedula)
-                            .addComponent(cmbSexo, 0, 1, Short.MAX_VALUE)
+                            .addComponent(cmbSexo, 0, 114, Short.MAX_VALUE)
                             .addComponent(txtApellido)
                             .addComponent(txtNombre)
                             .addComponent(txtNSS)
-                            .addComponent(cmbEstado, 0, 85, Short.MAX_VALUE)))
+                            .addComponent(cmbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -491,11 +490,11 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                         .addGap(18, 18, 18)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(cmbNomina, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtTipoRemuneracion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
+                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
@@ -517,9 +516,9 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(7, 7, 7)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LabelNSS)
                             .addComponent(LabelFechaIngreso)
@@ -552,9 +551,8 @@ public class ModificarEmpleado extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(txtCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
                         .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(12, 12, 12)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmbNomina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
@@ -585,12 +583,12 @@ public class ModificarEmpleado extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 4;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 127;
+        gridBagConstraints.ipadx = 254;
+        gridBagConstraints.ipady = 23;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 14, 30, 0);
+        gridBagConstraints.insets = new java.awt.Insets(18, 44, 0, 0);
         getContentPane().add(jPanel2, gridBagConstraints);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -599,7 +597,7 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 15, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(9, 45, 0, 0);
         getContentPane().add(jLabel7, gridBagConstraints);
 
         cmbNomina_2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Principal", "Mirador del Ozama" }));
@@ -611,7 +609,6 @@ public class ModificarEmpleado extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridheight = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(6, 18, 0, 0);
         getContentPane().add(cmbNomina_2, gridBagConstraints);
